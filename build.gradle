@@ -1,33 +1,36 @@
 plugins {
-    id 'com.google.protobuf' version '0.8.8'
+    id 'com.google.protobuf' version '0.8.15'
     id 'java'
 }
 
 apply plugin: 'idea'
 apply plugin: 'com.google.protobuf'
 
-group = 'self.ed'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation 'io.grpc:grpc-protobuf:1.20.0'
-    implementation 'io.grpc:grpc-stub:1.20.0'
+ext {
+    grpcVersion = '1.37.0'
+    protocVersion = '3.12.0'
+}
 
-    runtimeOnly 'io.grpc:grpc-netty-shaded:1.20.0'
+dependencies {
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+    compileOnly "org.apache.tomcat:annotations-api:6.0.53"
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
 }
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.7.1'
+        artifact = "com.google.protobuf:protoc:${protocVersion}"
     }
     plugins {
         grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.20.0' 
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
         }
     }
     generateProtoTasks {

@@ -1,4 +1,4 @@
-package self.ed.server;
+package demo.server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -13,6 +13,7 @@ public class DemoServer {
                 .start();
 
         Runtime.getRuntime().addShutdownHook(new Thread(server::shutdown));
+        System.out.println("listening...");
         server.awaitTermination();
     }
 }

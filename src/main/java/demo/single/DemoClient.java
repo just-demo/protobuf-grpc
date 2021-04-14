@@ -1,4 +1,4 @@
-package demo.client;
+package demo.single;
 
 import demo.proto.DemoRequest;
 import demo.proto.DemoResponse;

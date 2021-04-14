@@ -1,4 +1,4 @@
-package demo.client;
+package demo.stream;
 
 import demo.proto.DemoRequest;
 import demo.proto.DemoResponse;

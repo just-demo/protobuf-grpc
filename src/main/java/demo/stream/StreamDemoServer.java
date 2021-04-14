@@ -1,4 +1,4 @@
-package demo.server;
+package demo.stream;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;

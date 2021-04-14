@@ -2,11 +2,12 @@ package demo.client;
 
 import demo.proto.DemoRequest;
 import demo.proto.DemoResponse;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import demo.proto.DemoServiceGrpc;
 import demo.proto.DemoServiceGrpc.DemoServiceBlockingStub;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 
+import static demo.util.LogUtils.log;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class DemoClient {
@@ -21,7 +22,7 @@ public class DemoClient {
                 .build();
 
         DemoResponse response = blockingStub.demo(request);
-        System.out.println(response);
+        log(response);
         channel.shutdown().awaitTermination(5, SECONDS);
     }
 }

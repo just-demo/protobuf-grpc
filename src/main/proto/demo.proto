@@ -7,6 +7,10 @@ service DemoService {
     rpc Demo (DemoRequest) returns (DemoResponse);
 }
 
+service StreamDemoService {
+    rpc StreamDemo (stream DemoRequest) returns (stream DemoResponse) {}
+}
+
 message DemoRequest {
     string text = 1;
 }

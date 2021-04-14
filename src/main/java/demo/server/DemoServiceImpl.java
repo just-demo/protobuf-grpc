@@ -5,10 +5,12 @@ import demo.proto.DemoResponse;
 import io.grpc.stub.StreamObserver;
 import demo.proto.DemoServiceGrpc;
 
+import static demo.util.LogUtils.log;
+
 public class DemoServiceImpl extends DemoServiceGrpc.DemoServiceImplBase {
     @Override
     public void demo(DemoRequest request, StreamObserver<DemoResponse> responseObserver) {
-        System.out.println(request);
+        log(request);
         DemoResponse response = DemoResponse.newBuilder()
                 .setText("Demo response")
                 .build();

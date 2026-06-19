@@ -25,7 +25,7 @@ public class StreamDemoClient {
         StreamDemoServiceGrpc.StreamDemoServiceStub stub = StreamDemoServiceGrpc.newStub(channel);
 
         Iterator<String> iterator = asList("abcdefghiklmnopqrstvxyz".split("")).iterator();
-        ClientResponseObserver<DemoRequest, DemoResponse> responseObserver = new ClientResponseObserver<DemoRequest, DemoResponse>() {
+        ClientResponseObserver<DemoRequest, DemoResponse> responseObserver = new ClientResponseObserver<>() {
             private ClientCallStreamObserver<DemoRequest> requestStream;
 
             @Override

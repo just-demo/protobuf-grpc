@@ -10,7 +10,7 @@ import static demo.util.LogUtils.log;
 public class StreamDemoServiceImpl extends StreamDemoServiceGrpc.StreamDemoServiceImplBase {
     @Override
     public StreamObserver<DemoRequest> streamDemo(StreamObserver<DemoResponse> responseObserver) {
-        return new StreamObserver<DemoRequest>() {
+        return new StreamObserver<>() {
             @Override
             public void onNext(DemoRequest request) {
                 log(request);

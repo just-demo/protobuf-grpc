@@ -1,4 +1,4 @@
-package demo.stream;
+package just.demo.streaming.bidirectional;
 
 import demo.proto.DemoRequest;
 import demo.proto.DemoResponse;
@@ -11,11 +11,11 @@ import io.grpc.stub.ClientResponseObserver;
 import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
 
-import static demo.util.LogUtils.log;
+import static just.demo.util.LogUtils.log;
 import static java.util.Arrays.asList;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public class StreamDemoClient {
+public class BidirectionalStreamDemoClient {
     public static void main(String[] args) throws InterruptedException {
         CountDownLatch done = new CountDownLatch(1);
         ManagedChannel channel = ManagedChannelBuilder

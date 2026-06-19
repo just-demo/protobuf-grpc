@@ -1,14 +1,14 @@
-package demo.stream;
+package just.demo.streaming.bidirectional;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
-import static demo.util.LogUtils.log;
+import static just.demo.util.LogUtils.log;
 
-public class StreamDemoServer {
+public class BidirectionalStreamDemoServer {
     public static void main(String[] args) throws Exception {
         Server server = ServerBuilder.forPort(8080)
-                .addService(new StreamDemoServiceImpl())
+                .addService(new BidirectionalStreamDemoServiceImpl())
                 .build()
                 .start();
         log("listening...");

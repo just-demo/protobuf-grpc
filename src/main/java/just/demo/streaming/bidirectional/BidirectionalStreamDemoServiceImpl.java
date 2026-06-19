@@ -1,13 +1,13 @@
-package demo.stream;
+package just.demo.streaming.bidirectional;
 
 import demo.proto.DemoRequest;
 import demo.proto.DemoResponse;
 import demo.proto.StreamDemoServiceGrpc;
 import io.grpc.stub.StreamObserver;
 
-import static demo.util.LogUtils.log;
+import static just.demo.util.LogUtils.log;
 
-public class StreamDemoServiceImpl extends StreamDemoServiceGrpc.StreamDemoServiceImplBase {
+public class BidirectionalStreamDemoServiceImpl extends StreamDemoServiceGrpc.StreamDemoServiceImplBase {
     @Override
     public StreamObserver<DemoRequest> streamDemo(StreamObserver<DemoResponse> responseObserver) {
         return new StreamObserver<>() {

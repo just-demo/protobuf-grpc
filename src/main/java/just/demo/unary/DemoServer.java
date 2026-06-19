@@ -1,11 +1,11 @@
-package demo.single;
+package just.demo.unary;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
 import java.io.IOException;
 
-import static demo.util.LogUtils.log;
+import static just.demo.util.LogUtils.log;
 
 public class DemoServer {
     public static void main(String[] args) throws IOException, InterruptedException {

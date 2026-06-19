@@ -1,4 +1,4 @@
-package demo.single;
+package just.demo.unary;
 
 import demo.proto.DemoRequest;
 import demo.proto.DemoResponse;
@@ -7,7 +7,7 @@ import demo.proto.DemoServiceGrpc.DemoServiceBlockingStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
-import static demo.util.LogUtils.log;
+import static just.demo.util.LogUtils.log;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class DemoClient {

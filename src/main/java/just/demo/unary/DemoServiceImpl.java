@@ -1,11 +1,11 @@
-package demo.single;
+package just.demo.unary;
 
 import demo.proto.DemoRequest;
 import demo.proto.DemoResponse;
 import io.grpc.stub.StreamObserver;
 import demo.proto.DemoServiceGrpc;
 
-import static demo.util.LogUtils.log;
+import static just.demo.util.LogUtils.log;
 
 public class DemoServiceImpl extends DemoServiceGrpc.DemoServiceImplBase {
     @Override

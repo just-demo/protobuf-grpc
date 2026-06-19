@@ -7,10 +7,10 @@ import java.io.IOException;
 
 import static just.demo.util.LogUtils.log;
 
-public class DemoServer {
+public class UnaryDemoServer {
     public static void main(String[] args) throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(8080)
-                .addService(new DemoServiceImpl())
+                .addService(new UnaryDemoServiceImpl())
                 .build()
                 .start();
 

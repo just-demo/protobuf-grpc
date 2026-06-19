@@ -1,21 +1,21 @@
 package just.demo.unary;
 
-import demo.proto.DemoRequest;
-import demo.proto.DemoResponse;
-import demo.proto.DemoServiceGrpc;
-import demo.proto.DemoServiceGrpc.DemoServiceBlockingStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import just.demo.proto.DemoRequest;
+import just.demo.proto.DemoResponse;
+import just.demo.proto.UnaryDemoServiceGrpc;
+import just.demo.proto.UnaryDemoServiceGrpc.UnaryDemoServiceBlockingStub;
 
-import static just.demo.util.LogUtils.log;
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static just.demo.util.LogUtils.log;
 
-public class DemoClient {
+public class UnaryDemoClient {
     public static void main(String[] args) throws Exception {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
                 .usePlaintext()
                 .build();
-        DemoServiceBlockingStub blockingStub = DemoServiceGrpc.newBlockingStub(channel);
+        UnaryDemoServiceBlockingStub blockingStub = UnaryDemoServiceGrpc.newBlockingStub(channel);
 
         DemoRequest request = DemoRequest.newBuilder()
                 .setText("Demo request")

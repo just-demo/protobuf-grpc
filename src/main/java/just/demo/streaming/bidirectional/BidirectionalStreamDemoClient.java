@@ -1,19 +1,20 @@
 package just.demo.streaming.bidirectional;
 
-import demo.proto.DemoRequest;
-import demo.proto.DemoResponse;
-import demo.proto.StreamDemoServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.ClientCallStreamObserver;
 import io.grpc.stub.ClientResponseObserver;
+import just.demo.proto.BidirectionalStreamDemoServiceGrpc;
+import just.demo.proto.BidirectionalStreamDemoServiceGrpc.BidirectionalStreamDemoServiceStub;
+import just.demo.proto.DemoRequest;
+import just.demo.proto.DemoResponse;
 
 import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
 
-import static just.demo.util.LogUtils.log;
 import static java.util.Arrays.asList;
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static just.demo.util.LogUtils.log;
 
 public class BidirectionalStreamDemoClient {
     public static void main(String[] args) throws InterruptedException {
@@ -22,7 +23,7 @@ public class BidirectionalStreamDemoClient {
                 .forAddress("localhost", 8080)
                 .usePlaintext()
                 .build();
-        StreamDemoServiceGrpc.StreamDemoServiceStub stub = StreamDemoServiceGrpc.newStub(channel);
+        BidirectionalStreamDemoServiceStub stub = BidirectionalStreamDemoServiceGrpc.newStub(channel);
 
         Iterator<String> iterator = asList("abcdefghiklmnopqrstvxyz".split("")).iterator();
         ClientResponseObserver<DemoRequest, DemoResponse> responseObserver = new ClientResponseObserver<>() {

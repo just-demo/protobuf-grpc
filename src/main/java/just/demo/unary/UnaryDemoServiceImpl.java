@@ -1,13 +1,13 @@
 package just.demo.unary;
 
-import demo.proto.DemoRequest;
-import demo.proto.DemoResponse;
 import io.grpc.stub.StreamObserver;
-import demo.proto.DemoServiceGrpc;
+import just.demo.proto.DemoRequest;
+import just.demo.proto.DemoResponse;
+import just.demo.proto.UnaryDemoServiceGrpc;
 
 import static just.demo.util.LogUtils.log;
 
-public class DemoServiceImpl extends DemoServiceGrpc.DemoServiceImplBase {
+public class UnaryDemoServiceImpl extends UnaryDemoServiceGrpc.UnaryDemoServiceImplBase {
     @Override
     public void demo(DemoRequest request, StreamObserver<DemoResponse> responseObserver) {
         log(request);

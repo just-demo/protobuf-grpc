@@ -11,6 +11,10 @@ service ServerStreamDemoService {
     rpc Demo (DemoRequest) returns (stream DemoResponse);
 }
 
+service ClientStreamDemoService {
+    rpc Demo (stream DemoRequest) returns (DemoResponse);
+}
+
 service BidirectionalStreamDemoService {
     rpc Demo (stream DemoRequest) returns (stream DemoResponse);
 }

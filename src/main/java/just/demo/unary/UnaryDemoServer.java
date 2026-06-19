@@ -14,7 +14,6 @@ public class UnaryDemoServer {
                 .build()
                 .start();
 
-        Runtime.getRuntime().addShutdownHook(new Thread(server::shutdown));
         log("listening...");
         server.awaitTermination();
     }

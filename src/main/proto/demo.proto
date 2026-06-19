@@ -7,8 +7,12 @@ service UnaryDemoService {
     rpc Demo (DemoRequest) returns (DemoResponse);
 }
 
+service ServerStreamDemoService {
+    rpc Demo (DemoRequest) returns (stream DemoResponse);
+}
+
 service BidirectionalStreamDemoService {
-    rpc StreamDemo (stream DemoRequest) returns (stream DemoResponse) {}
+    rpc Demo (stream DemoRequest) returns (stream DemoResponse);
 }
 
 message DemoRequest {

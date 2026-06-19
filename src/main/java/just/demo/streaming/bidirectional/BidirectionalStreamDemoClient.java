@@ -9,10 +9,9 @@ import just.demo.proto.BidirectionalStreamDemoServiceGrpc.BidirectionalStreamDem
 import just.demo.proto.DemoRequest;
 import just.demo.proto.DemoResponse;
 
-import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import static java.util.Arrays.asList;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static just.demo.util.LogUtils.log;
 
@@ -25,7 +24,7 @@ public class BidirectionalStreamDemoClient {
                 .build();
         BidirectionalStreamDemoServiceStub stub = BidirectionalStreamDemoServiceGrpc.newStub(channel);
 
-        Iterator<String> iterator = asList("abcdefghiklmnopqrstvxyz".split("")).iterator();
+        AtomicInteger counter = new AtomicInteger();
         ClientResponseObserver<DemoRequest, DemoResponse> responseObserver = new ClientResponseObserver<>() {
             private ClientCallStreamObserver<DemoRequest> requestStream;
 
@@ -37,7 +36,7 @@ public class BidirectionalStreamDemoClient {
 
             @Override
             public void onNext(DemoResponse response) {
-                log(response);
+                log("response: " + response.getText());
                 next();
             }
 
@@ -54,17 +53,18 @@ public class BidirectionalStreamDemoClient {
             }
 
             private void next() {
-                if (iterator.hasNext()) {
+                if (counter.incrementAndGet() > 10) {
+                    requestStream.onCompleted();
+                } else {
                     DemoRequest request = DemoRequest.newBuilder()
-                            .setText(iterator.next())
+                            .setText("Demo request " + counter.get())
                             .build();
                     requestStream.onNext(request);
-                } else {
-                    requestStream.onCompleted();
                 }
             }
         };
-        stub.streamDemo(responseObserver);
+
+        stub.demo(responseObserver);
         done.await();
         channel.shutdown();
         channel.awaitTermination(5, SECONDS);

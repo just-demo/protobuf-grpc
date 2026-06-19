@@ -22,7 +22,7 @@ public class UnaryDemoClient {
                 .build();
 
         DemoResponse response = blockingStub.demo(request);
-        log(response);
+        log("response: " + response.getText());
         channel.shutdown().awaitTermination(5, SECONDS);
     }
 }

@@ -10,7 +10,7 @@ import static just.demo.util.LogUtils.log;
 public class UnaryDemoServiceImpl extends UnaryDemoServiceGrpc.UnaryDemoServiceImplBase {
     @Override
     public void demo(DemoRequest request, StreamObserver<DemoResponse> responseObserver) {
-        log(request);
+        log("request: " + request.getText());
         DemoResponse response = DemoResponse.newBuilder()
                 .setText("Demo response")
                 .build();
